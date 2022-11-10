@@ -1,10 +1,10 @@
-import 'dart:ffi';
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/telas/sign_up_screen.dart';
+import 'package:flutter_application_1/values/CustomColors.dart';
 
 class LoginScreen extends StatefulWidget {
-  bool continueConnected = false;
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -12,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool continueConnected = false;
+  bool? continueConnected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 5, 77, 53),
-              Color.fromARGB(255, 78, 185, 169),
+              Color.fromARGB(255, 199, 67, 33),
+              Color.fromARGB(255, 155, 109, 40),
             ],
           ),
         ),
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  bottom: 15,
+                  bottom: 40,
                 ),
               ),
               Text(
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: EdgeInsets.only(bottom: 20),
               ),
               GestureDetector(
                 onTap: () {},
@@ -128,18 +128,67 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.right,
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
               Row(
                 children: [
                   Checkbox(
-                    value: this.continueConected,
-                    onChanged: (bool newValue) {
+                    value: this.continueConnected,
+                    onChanged: (bool? novo) {
                       setState(() {
-                        this.continueConnected = newValue;
+                        this.continueConnected = novo;
                       });
                     },
                   ),
+                  Text(
+                    "Manter-me Conectado",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
-              )
+              ),
+              RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                color: CustomColors().getActivePrimaryButtonColor(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Divider(
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                "Não tem uma conta?",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 13),
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
+                  child: Text("Cadastre-se"),
+                  color: CustomColors().getActiveSecondaryButtonColor(),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

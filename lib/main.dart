@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/telas/home.dart';
 import 'package:flutter_application_1/telas/login.dart';
+import 'package:flutter_application_1/telas/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
